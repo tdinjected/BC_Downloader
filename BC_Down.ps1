@@ -8,9 +8,10 @@
    **  v1.0: Checks to see if destination folder already exists and what to do if it does.      
    **  v1.1: Fixed track name detection for file naming due to BandCamp's source code change.
    **  v1.2: Shortened script.  Excluding intro comments, it's now only 58 lines (9/26/2016).					
-   **  v1.3: Fixed special char filenames MS won't permit (replace w/ underscore.) 61 lines 10/11/2016 #>
+   **  v1.3: Fixed special char filenames MS won't permit (replace w/ underscore.) 
+   **  v1.4: Fixed the "Public\Desktop" var so that it should be universal.   61 lines 10/25/2016 #>
 CLS
-Write-Host "`r`n  **   BandCamp Downloader v1.1 Ross Callahan   **"
+Write-Host "`r`n  **   BandCamp Downloader v1.3 Ross Callahan   **"
 Write-Host "   (Limited to 128Kbps by BandCamp for streaming)`r`n"
 $wc = New-Object System.Net.WebClient
 $loadedfrom = $PWD.Path + "\BC_Down.ps1"
@@ -18,7 +19,7 @@ $loadedfrom = $PWD.Path + "\BC_Down.ps1"
 #  Downloads source of webpage user entered, splits into lines, then sets keywords for finding name/download URL
 $BC_Url = Read-Host -Prompt "Please paste the album URL (The files will be on your desktop in 'BandCamp_Downloaded')"
 $DL_Folder = Read-Host -Prompt 'Please enter a folder name'
-$DL_Path = "c:\users\public\desktop\BandCamp_Downloaded\" + $DL_Folder
+$DL_Path = ([Environment]::GetEnvironmentVariable("Public"))+"\Desktop\BandCamp_Downloaded\" + $DL_Folder
 If (Test-Path $DL_Path) {
 	Do { $Rslt = Read-Host -Prompt "`r`nThis folder already exists.  Overwrite? (Y/N)" }
 	While (($Rslt.ToUpper() -ne "Y") -and ($Rslt.ToUpper() -ne "N"))
