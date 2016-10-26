@@ -11,8 +11,8 @@
    **  v1.3: Fixed special char filenames MS won't permit (replace w/ underscore.) 
    **  v1.4: Fixed the "Public\Desktop" var so that it should be universal.   61 lines 10/25/2016 #>
 CLS
-Write-Host "`r`n  **   BandCamp Downloader v1.3 Ross Callahan   **"
-Write-Host "   (Limited to 128Kbps by BandCamp for streaming)`r`n"
+Write-Host "`r`n  **   BandCamp Downloader v1.4 R. Callahan   **"
+Write-Host "  (Limited to 128Kbps by BandCamp for streaming)`r`n"
 $wc = New-Object System.Net.WebClient
 $loadedfrom = $PWD.Path + "\BC_Down.ps1"
 
