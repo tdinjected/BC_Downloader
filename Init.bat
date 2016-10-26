@@ -1,3 +1,6 @@
 @Echo Off
 CLS
-PowerShell.exe -ExecutionPolicy Bypass -File BC_Down.ps1
+set loc=%~DP0
+set script="%loc%BC_Down.ps1"
+PowerShell.exe -ExecutionPolicy Bypass -File %script%
+pause
